@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+@layer base {
+  :root {
+    --brand-gradient: linear-gradient(135deg, #BF36FF 0%, #368DFF 100%);
+    --bg-primary: #ffffff;
+    --text-primary: #1a1a1a;
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(0, 0, 0, 0.1);
+  }
+
+  .tier-2 {
+    --bg-primary: #0a0a1a;
+    --text-primary: #e0e0ff;
+    --glass-bg: rgba(10, 10, 26, 0.8);
+    --glass-border: rgba(54, 141, 255, 0.3);
+  }
+
+  .tier-3 {
+    --bg-primary: #000000;
+    --text-primary: #ffffff;
+    --glass-bg: rgba(0, 0, 0, 0.9);
+    --glass-border: rgba(255, 255, 255, 0.2);
+  }
+}
+
+body {
+  @apply font-sans antialiased transition-colors duration-500;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.glass {
+  @apply backdrop-blur-xl border;
+  background: var(--glass-bg);
+  border-color: var(--glass-border);
+}
+
+.brand-text {
+  background: var(--brand-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.brand-bg {
+  background: var(--brand-gradient);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  @apply rounded-full;
+  background: var(--glass-border);
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.shimmer {
+  background: linear-gradient(90deg, transparent, var(--glass-border), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+

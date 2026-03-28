@@ -1,0 +1,8 @@
+{
+  "name": "OmniSolve",
+  "description": "A multi-modal Cognitive-Adaptive Resolution Engine (AI Tutor) with neural-prism aesthetics and gamified mastery tracking.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
