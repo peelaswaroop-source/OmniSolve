@@ -53,49 +53,49 @@ export const InputCommandCenter: React.FC<InputCommandCenterProps> = ({ onFinali
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto p-4">
+    <div className="w-full max-w-4xl mx-auto p-2 md:p-4">
       <div 
         {...getRootProps()} 
         className={cn(
-          "glass rounded-3xl p-2 transition-all duration-300 shadow-2xl",
+          "glass rounded-2xl md:rounded-3xl p-1 md:p-2 transition-all duration-300 shadow-2xl",
           isDragActive && "ring-2 ring-purple-500 scale-[1.02]"
         )}
       >
         <input {...getInputProps()} />
         
-        <div className="flex items-center gap-2 px-4 py-2">
-          <div className="flex-1 flex items-center gap-3">
+        <div className="flex items-center gap-1 md:gap-2 px-2 md:px-4 py-1 md:py-2">
+          <div className="flex-1 flex items-center gap-2 md:gap-3">
             <input
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              placeholder="Enter your query or drop an image..."
-              className="w-full bg-transparent border-none outline-none text-lg placeholder:opacity-50"
+              placeholder="Query or drop image..."
+              className="w-full bg-transparent border-none outline-none text-base md:text-lg placeholder:opacity-50"
               onKeyDown={(e) => e.key === 'Enter' && !summary && handleScan()}
             />
           </div>
           
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1 md:gap-2">
             <button 
               onClick={() => (document.querySelector('input[type="file"]') as HTMLInputElement)?.click()}
-              className="p-2 hover:bg-black/5 dark:hover:bg-white/5 rounded-full transition-colors"
+              className="p-1.5 md:p-2 hover:bg-black/5 dark:hover:bg-white/5 rounded-full transition-colors"
             >
-              <ImageIcon className="w-5 h-5 opacity-70" />
+              <ImageIcon className="w-4 h-4 md:w-5 md:h-5 opacity-70" />
             </button>
-            <button className="p-2 hover:bg-black/5 dark:hover:bg-white/5 rounded-full transition-colors">
-              <Mic className="w-5 h-5 opacity-70" />
+            <button className="p-1.5 md:p-2 hover:bg-black/5 dark:hover:bg-white/5 rounded-full transition-colors">
+              <Mic className="w-4 h-4 md:w-5 md:h-5 opacity-70" />
             </button>
             <button
               onClick={summary ? handleFinalize : handleScan}
               disabled={isScanning || isProcessing || (!input && !image)}
-              className="brand-bg text-white p-3 rounded-2xl shadow-lg hover:scale-105 active:scale-95 transition-all disabled:opacity-50"
+              className="brand-bg text-white p-2 md:p-3 rounded-xl md:rounded-2xl shadow-lg hover:scale-105 active:scale-95 transition-all disabled:opacity-50"
             >
               {isScanning || isProcessing ? (
-                <Loader2 className="w-5 h-5 animate-spin" />
+                <Loader2 className="w-4 h-4 md:w-5 md:h-5 animate-spin" />
               ) : summary ? (
-                <Send className="w-5 h-5" />
+                <Send className="w-4 h-4 md:w-5 md:h-5" />
               ) : (
-                <span className="text-sm font-bold px-2">SCAN</span>
+                <span className="text-[10px] md:text-sm font-bold px-1 md:px-2">SCAN</span>
               )}
             </button>
           </div>

@@ -22,7 +22,7 @@ export const MasteryDashboard: React.FC = () => {
   const progress = (stats.xp / nextLevelXp) * 100;
 
   return (
-    <div className="w-80 h-full glass border-l flex flex-col p-6 space-y-8 overflow-y-auto">
+    <div className="w-full h-full glass md:border-l flex flex-col p-6 space-y-8 overflow-y-auto">
       <div className="text-center space-y-4">
         <div className="relative inline-block">
           <div className="w-24 h-24 rounded-full brand-bg p-1 shadow-2xl">

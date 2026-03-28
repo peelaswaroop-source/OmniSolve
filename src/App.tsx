@@ -12,12 +12,14 @@ import { NeuralOrb } from './components/NeuralOrb';
 import { Message } from './types';
 import { finalizeResolution } from './services/gemini';
 import { motion, AnimatePresence } from 'motion/react';
-import { Brain, Sparkles, Command } from 'lucide-react';
+import { Brain, Sparkles, Command, Menu, X } from 'lucide-react';
+import { cn } from './lib/utils';
 
 function OmniSolveApp() {
   const { stats, tier, addXp } = useMastery();
   const [messages, setMessages] = useState<Message[]>([]);
   const [isProcessing, setIsProcessing] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const chatEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -41,7 +43,6 @@ function OmniSolveApp() {
         parts: [{ text: m.content }],
       }));
 
-      // If image exists, add it to the last message parts
       if (image) {
         const lastMsg = geminiMessages[geminiMessages.length - 1];
         lastMsg.parts.push({
@@ -62,7 +63,7 @@ function OmniSolveApp() {
       };
 
       setMessages(prev => [...prev, assistantMsg]);
-      addXp(250); // Reward for interaction
+      addXp(250);
     } catch (error) {
       console.error(error);
     } finally {
@@ -71,45 +72,51 @@ function OmniSolveApp() {
   };
 
   return (
-    <div className="flex h-screen overflow-hidden">
+    <div className="flex h-screen overflow-hidden flex-col md:flex-row">
       {/* Main Content Area */}
-      <main className="flex-1 flex flex-col relative">
+      <main className="flex-1 flex flex-col relative h-full">
         {/* Header */}
-        <header className="h-16 flex items-center justify-between px-8 glass border-b z-10">
+        <header className="h-16 flex items-center justify-between px-4 md:px-8 glass border-b z-30">
           <div className="flex items-center gap-3">
             <div className="w-8 h-8 brand-bg rounded-lg flex items-center justify-center shadow-lg">
               <Brain className="w-5 h-5 text-white" />
             </div>
-            <h1 className="text-xl font-black tracking-tighter uppercase font-display">OmniSolve</h1>
+            <h1 className="text-lg md:text-xl font-black tracking-tighter uppercase font-display">OmniSolve</h1>
           </div>
           
-          <div className="flex items-center gap-6">
-            <div className="flex items-center gap-2 opacity-50 hover:opacity-100 transition-opacity cursor-help">
+          <div className="flex items-center gap-2 md:gap-6">
+            <div className="hidden md:flex items-center gap-2 opacity-50 hover:opacity-100 transition-opacity cursor-help">
               <Command className="w-4 h-4" />
               <span className="text-[10px] font-bold uppercase tracking-widest">Neural Command Active</span>
             </div>
-            <div className="h-4 w-[1px] bg-white/10" />
+            <div className="hidden md:block h-4 w-[1px] bg-white/10" />
             <div className="flex items-center gap-2">
               <Sparkles className="w-4 h-4 text-purple-500" />
-              <span className="text-[10px] font-black uppercase tracking-widest">Mastery Tier {tier}</span>
+              <span className="text-[10px] font-black uppercase tracking-widest">Tier {tier}</span>
             </div>
+            <button 
+              onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+              className="md:hidden p-2 glass rounded-lg"
+            >
+              {isSidebarOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            </button>
           </div>
         </header>
 
         {/* Chat Area */}
         <div className="flex-1 overflow-hidden flex flex-col bg-gradient-to-b from-transparent to-black/5 dark:to-white/5">
           {messages.length === 0 ? (
-            <div className="flex-1 flex flex-col items-center justify-center p-8 text-center space-y-6">
+            <div className="flex-1 flex flex-col items-center justify-center p-6 md:p-8 text-center space-y-6">
               <motion.div
                 initial={{ scale: 0.9, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
-                className="w-32 h-32 brand-bg rounded-[2.5rem] flex items-center justify-center shadow-2xl rotate-12"
+                className="w-24 h-24 md:w-32 md:h-32 brand-bg rounded-[2rem] md:rounded-[2.5rem] flex items-center justify-center shadow-2xl rotate-12"
               >
-                <Brain className="w-16 h-16 text-white -rotate-12" />
+                <Brain className="w-12 h-12 md:w-16 md:h-16 text-white -rotate-12" />
               </motion.div>
               <div className="space-y-2">
-                <h2 className="text-4xl font-black tracking-tighter uppercase font-display">Initiate Resolution</h2>
-                <p className="max-w-md mx-auto opacity-50 text-sm font-medium leading-relaxed">
+                <h2 className="text-2xl md:text-4xl font-black tracking-tighter uppercase font-display">Initiate Resolution</h2>
+                <p className="max-w-xs md:max-w-md mx-auto opacity-50 text-xs md:text-sm font-medium leading-relaxed">
                   Welcome to OmniSolve. I am your Cognitive-Adaptive Resolution Engine. 
                   Upload an image or enter a query to begin the neural scan.
                 </p>
@@ -122,15 +129,29 @@ function OmniSolveApp() {
         </div>
 
         {/* Input Area */}
-        <div className="p-8 pb-12 bg-gradient-to-t from-white dark:from-black to-transparent">
+        <div className="p-4 md:p-8 pb-8 md:pb-12 bg-gradient-to-t from-white dark:from-black to-transparent z-20">
           <InputCommandCenter onFinalize={handleFinalize} isProcessing={isProcessing} />
         </div>
 
         <NeuralOrb />
       </main>
 
-      {/* Sidebar */}
-      <MasteryDashboard />
+      {/* Sidebar - Responsive Overlay for Mobile */}
+      <div className={cn(
+        "fixed inset-0 z-40 md:relative md:inset-auto transition-transform duration-300 ease-in-out",
+        isSidebarOpen ? "translate-x-0" : "translate-x-full md:translate-x-0"
+      )}>
+        {/* Mobile Backdrop */}
+        {isSidebarOpen && (
+          <div 
+            className="absolute inset-0 bg-black/50 backdrop-blur-sm md:hidden"
+            onClick={() => setIsSidebarOpen(false)}
+          />
+        )}
+        <div className="relative h-full w-80 ml-auto bg-white dark:bg-black md:bg-transparent">
+          <MasteryDashboard />
+        </div>
+      </div>
     </div>
   );
 }
