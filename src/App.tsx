@@ -80,7 +80,7 @@ function OmniSolveApp() {
             <div className="w-8 h-8 brand-bg rounded-lg flex items-center justify-center shadow-lg">
               <Brain className="w-5 h-5 text-white" />
             </div>
-            <h1 className="text-xl font-black tracking-tighter uppercase">OmniSolve</h1>
+            <h1 className="text-xl font-black tracking-tighter uppercase font-display">OmniSolve</h1>
           </div>
           
           <div className="flex items-center gap-6">
@@ -108,7 +108,7 @@ function OmniSolveApp() {
                 <Brain className="w-16 h-16 text-white -rotate-12" />
               </motion.div>
               <div className="space-y-2">
-                <h2 className="text-4xl font-black tracking-tighter uppercase">Initiate Resolution</h2>
+                <h2 className="text-4xl font-black tracking-tighter uppercase font-display">Initiate Resolution</h2>
                 <p className="max-w-md mx-auto opacity-50 text-sm font-medium leading-relaxed">
                   Welcome to OmniSolve. I am your Cognitive-Adaptive Resolution Engine. 
                   Upload an image or enter a query to begin the neural scan.

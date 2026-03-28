@@ -40,7 +40,7 @@ const MessageItem: React.FC<{ message: Message }> = ({ message }) => {
               <div key={index} className="bg-black/10 dark:bg-white/5 p-6 rounded-3xl border-l-4 border-purple-500 my-4 shadow-inner">
                 <div className="flex items-center gap-2 mb-2 text-purple-500">
                   <Brain className="w-5 h-5" />
-                  <span className="text-xs font-black tracking-widest uppercase">Resolution</span>
+                  <span className="text-xs font-black tracking-widest uppercase font-display">Resolution</span>
                 </div>
                 <p className="text-lg leading-relaxed font-medium">{text}</p>
               </div>
@@ -51,7 +51,7 @@ const MessageItem: React.FC<{ message: Message }> = ({ message }) => {
               <div key={index} className="bg-blue-500/10 border border-blue-500/20 p-4 rounded-2xl my-4 backdrop-blur-sm">
                 <div className="flex items-center gap-2 mb-2 text-blue-400">
                   <Lightbulb className="w-4 h-4" />
-                  <span className="text-xs font-bold tracking-widest uppercase">Analogy Bridge</span>
+                  <span className="text-xs font-bold tracking-widest uppercase font-display">Analogy Bridge</span>
                 </div>
                 <p className="text-sm italic opacity-90">{text}</p>
               </div>
@@ -72,7 +72,7 @@ const MessageItem: React.FC<{ message: Message }> = ({ message }) => {
               <div key={index} className="bg-amber-500/5 border-l-2 border-amber-500 p-4 my-4 rounded-r-xl">
                 <div className="flex items-center gap-2 mb-1 text-amber-500">
                   <Zap className="w-4 h-4" />
-                  <span className="text-xs font-bold uppercase">Deep Insight</span>
+                  <span className="text-xs font-bold uppercase font-display">Deep Insight</span>
                 </div>
                 <p className="text-sm opacity-80">{text}</p>
               </div>
@@ -82,7 +82,7 @@ const MessageItem: React.FC<{ message: Message }> = ({ message }) => {
             elements.push(
               <div key={index} className="bg-emerald-500/10 border border-dashed border-emerald-500/30 p-5 rounded-3xl my-6 text-center">
                 <Target className="w-6 h-6 text-emerald-500 mx-auto mb-2" />
-                <p className="text-sm font-bold text-emerald-500 mb-1 uppercase tracking-tighter">Mastery Challenge</p>
+                <p className="text-sm font-bold text-emerald-500 mb-1 uppercase tracking-tighter font-display">Mastery Challenge</p>
                 <p className="text-base font-medium italic">"{text}"</p>
               </div>
             );
