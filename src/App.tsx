@@ -12,7 +12,7 @@ import { NeuralOrb } from './components/NeuralOrb';
 import { Message } from './types';
 import { finalizeResolution } from './services/gemini';
 import { motion, AnimatePresence } from 'motion/react';
-import { Brain, Sparkles, Command, Menu, X } from 'lucide-react';
+import { Orbit, Sparkles, Command, Menu, X } from 'lucide-react';
 import { cn } from './lib/utils';
 
 function OmniSolveApp() {
@@ -79,20 +79,15 @@ function OmniSolveApp() {
         <header className="h-16 flex items-center justify-between px-4 md:px-8 glass border-b z-30">
           <div className="flex items-center gap-3">
             <div className="w-8 h-8 brand-bg rounded-lg flex items-center justify-center shadow-lg">
-              <Brain className="w-5 h-5 text-white" />
+              <Orbit className="w-5 h-5 text-white animate-spin-slow" />
             </div>
-            <h1 className="text-lg md:text-xl font-black tracking-tighter uppercase font-display">OmniSolve</h1>
+            <h1 className="text-xl md:text-2xl font-bold tracking-tight uppercase font-display">OmniSolve</h1>
           </div>
           
           <div className="flex items-center gap-2 md:gap-6">
-            <div className="hidden md:flex items-center gap-2 opacity-50 hover:opacity-100 transition-opacity cursor-help">
-              <Command className="w-4 h-4" />
-              <span className="text-[10px] font-bold uppercase tracking-widest">Neural Command Active</span>
-            </div>
-            <div className="hidden md:block h-4 w-[1px] bg-white/10" />
             <div className="flex items-center gap-2">
               <Sparkles className="w-4 h-4 text-purple-500" />
-              <span className="text-[10px] font-black uppercase tracking-widest">Tier {tier}</span>
+              <span className="text-[10px] font-bold uppercase tracking-widest">Tier {tier}</span>
             </div>
             <button 
               onClick={() => setIsSidebarOpen(!isSidebarOpen)}
@@ -112,13 +107,13 @@ function OmniSolveApp() {
                 animate={{ scale: 1, opacity: 1 }}
                 className="w-24 h-24 md:w-32 md:h-32 brand-bg rounded-[2rem] md:rounded-[2.5rem] flex items-center justify-center shadow-2xl rotate-12"
               >
-                <Brain className="w-12 h-12 md:w-16 md:h-16 text-white -rotate-12" />
+                <Orbit className="w-12 h-12 md:w-16 md:h-16 text-white -rotate-12 animate-spin-slow" />
               </motion.div>
               <div className="space-y-2">
-                <h2 className="text-2xl md:text-4xl font-black tracking-tighter uppercase font-display">Initiate Resolution</h2>
+                <h2 className="text-3xl md:text-5xl font-bold tracking-tight uppercase font-display">What can we solve together?</h2>
                 <p className="max-w-xs md:max-w-md mx-auto opacity-50 text-xs md:text-sm font-medium leading-relaxed">
-                  Welcome to OmniSolve. I am your Cognitive-Adaptive Resolution Engine. 
-                  Upload an image or enter a query to begin the neural scan.
+                  I'm here to help you understand and master any challenge. 
+                  Share a photo or just start typing, and we'll find the answer together.
                 </p>
               </div>
             </div>

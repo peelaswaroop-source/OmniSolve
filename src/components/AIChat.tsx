@@ -40,7 +40,7 @@ const MessageItem: React.FC<{ message: Message }> = ({ message }) => {
               <div key={index} className="bg-black/10 dark:bg-white/5 p-4 md:p-6 rounded-2xl md:rounded-3xl border-l-4 border-purple-500 my-3 md:my-4 shadow-inner">
                 <div className="flex items-center gap-2 mb-2 text-purple-500">
                   <Brain className="w-4 h-4 md:w-5 md:h-5" />
-                  <span className="text-[10px] md:text-xs font-black tracking-widest uppercase font-display">Resolution</span>
+                  <span className="text-[10px] md:text-xs font-bold tracking-widest uppercase font-display">Thought</span>
                 </div>
                 <p className="text-base md:text-lg leading-relaxed font-medium">{text}</p>
               </div>
@@ -82,7 +82,7 @@ const MessageItem: React.FC<{ message: Message }> = ({ message }) => {
             elements.push(
               <div key={index} className="bg-emerald-500/10 border border-dashed border-emerald-500/30 p-4 md:p-5 rounded-2xl md:rounded-3xl my-4 md:my-6 text-center">
                 <Target className="w-5 h-5 md:w-6 md:h-6 text-emerald-500 mx-auto mb-2" />
-                <p className="text-[10px] md:text-sm font-bold text-emerald-500 mb-1 uppercase tracking-tighter font-display">Mastery Challenge</p>
+                <p className="text-[10px] md:text-sm font-bold text-emerald-500 mb-1 uppercase tracking-tight font-display">Mastery Challenge</p>
                 <p className="text-sm md:text-base font-medium italic">"{text}"</p>
               </div>
             );
@@ -152,7 +152,7 @@ const MessageItem: React.FC<{ message: Message }> = ({ message }) => {
 
             {message.sources && message.sources.length > 0 && (
               <div className="mt-6 md:mt-8 pt-4 md:pt-6 border-t border-white/5">
-                <p className="text-[8px] md:text-[10px] font-black tracking-widest uppercase opacity-30 mb-3">Grounding Sources</p>
+                <p className="text-[8px] md:text-[10px] font-bold tracking-widest uppercase opacity-30 mb-3">Grounding Sources</p>
                 <div className="flex flex-wrap gap-2">
                   {message.sources.map((source, i) => (
                     <a

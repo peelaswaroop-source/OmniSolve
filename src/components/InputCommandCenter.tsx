@@ -69,7 +69,7 @@ export const InputCommandCenter: React.FC<InputCommandCenterProps> = ({ onFinali
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              placeholder="Query or drop image..."
+              placeholder="What's on your mind?..."
               className="w-full bg-transparent border-none outline-none text-base md:text-lg placeholder:opacity-50"
               onKeyDown={(e) => e.key === 'Enter' && !summary && handleScan()}
             />
@@ -123,14 +123,14 @@ export const InputCommandCenter: React.FC<InputCommandCenterProps> = ({ onFinali
                 )}
                 {summary && (
                   <div className="flex-1">
-                    <p className="text-xs uppercase tracking-widest opacity-50 mb-1 font-bold">Neural Scan Summary</p>
+                    <p className="text-xs uppercase tracking-widest opacity-50 mb-1 font-bold">Quick Insight</p>
                     <p className="text-sm italic opacity-90 leading-relaxed">"{summary}"</p>
                     <div className="mt-3 flex gap-2">
                       <button 
                         onClick={handleFinalize}
                         className="text-xs font-bold px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition-colors"
                       >
-                        FINALIZE RESOLUTION
+                        LET'S GO
                       </button>
                       <button 
                         onClick={() => setSummary(null)}

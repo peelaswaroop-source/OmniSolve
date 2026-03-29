@@ -27,7 +27,7 @@ export const MasteryDashboard: React.FC = () => {
         <div className="relative inline-block">
           <div className="w-24 h-24 rounded-full brand-bg p-1 shadow-2xl">
             <div className="w-full h-full rounded-full bg-white dark:bg-black flex items-center justify-center">
-              <span className="text-4xl font-black brand-text">{stats.level}</span>
+              <span className="text-4xl font-bold brand-text">{stats.level}</span>
             </div>
           </div>
           <motion.div 
@@ -39,13 +39,13 @@ export const MasteryDashboard: React.FC = () => {
           </motion.div>
         </div>
         <div>
-          <h2 className="text-xl font-black tracking-tighter uppercase font-display">OmniSavant</h2>
+          <h2 className="text-2xl font-bold tracking-tight uppercase font-display brand-text">OmniSavant</h2>
           <p className="text-[10px] font-bold tracking-[0.2em] opacity-50 uppercase">Tier {tier} Resolution Engine</p>
         </div>
       </div>
 
       <div className="space-y-2">
-        <div className="flex justify-between text-[10px] font-black uppercase tracking-widest opacity-50">
+        <div className="flex justify-between text-[10px] font-bold uppercase tracking-widest opacity-50">
           <span>Cognitive XP</span>
           <span>{stats.xp} / {nextLevelXp}</span>
         </div>
@@ -59,7 +59,7 @@ export const MasteryDashboard: React.FC = () => {
       </div>
 
       <div className="flex-1 min-h-[300px] relative">
-        <p className="text-[10px] font-black uppercase tracking-widest opacity-30 text-center mb-4">Radar Vector Analysis</p>
+        <p className="text-[10px] font-bold uppercase tracking-widest opacity-30 text-center mb-4">Radar Vector Analysis</p>
         <ResponsiveContainer width="100%" height="100%">
           <RadarChart cx="50%" cy="50%" outerRadius="80%" data={chartData}>
             <PolarGrid stroke="currentColor" strokeOpacity={0.1} />
@@ -87,8 +87,8 @@ const StatCard: React.FC<{ icon: React.ReactNode; label: string; value: string }
   <div className="bg-black/5 dark:bg-white/5 p-3 rounded-2xl border border-white/5">
     <div className="flex items-center gap-2 opacity-50 mb-1">
       {icon}
-      <span className="text-[8px] font-black uppercase tracking-widest">{label}</span>
+      <span className="text-[8px] font-bold uppercase tracking-widest">{label}</span>
     </div>
-    <p className="text-sm font-black">{value}</p>
+    <p className="text-sm font-bold">{value}</p>
   </div>
 );
