@@ -39,7 +39,7 @@ export const MasteryDashboard: React.FC = () => {
           </motion.div>
         </div>
         <div>
-          <h2 className="text-2xl font-bold tracking-tight uppercase font-display brand-text">OmniSavant</h2>
+          <h2 className="text-2xl font-black tracking-[-0.08em] uppercase font-logo brand-text">OmniSavant</h2>
           <p className="text-[10px] font-bold tracking-[0.2em] opacity-50 uppercase">Tier {tier} Resolution Engine</p>
         </div>
       </div>

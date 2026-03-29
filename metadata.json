@@ -1,6 +1,6 @@
 {
   "name": "OmniSolve",
-  "description": "A multi-modal Cognitive-Adaptive Resolution Engine (AI Tutor) with neural-prism aesthetics and gamified mastery tracking.",
+  "description": "A collaborative Cognitive-Adaptive partner for solving challenges together, featuring Gen Z tech aesthetics and personalized neural mastery tracking.",
   "requestFramePermissions": [
     "camera",
     "microphone"
